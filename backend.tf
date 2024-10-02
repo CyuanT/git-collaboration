@@ -4,4 +4,5 @@ terraform {
     key    = "group3_shared_git.tfstate" # Change the value of this to <your suggested name>.tfstate for  example
     region = "us-east-1"
   }
+  required_version = "~> 1.9.5"
 }
