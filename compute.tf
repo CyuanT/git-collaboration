@@ -65,7 +65,7 @@ module "ec2_instance" {
   ami                    = data.aws_ami.aws_ami_data.id
   instance_type          = var.ec2_instance_type
   vpc_security_group_ids = [data.aws_security_group.vpc_sg_data.id]
-  subnet_id              = data.aws_subnet.public_subnet_data.id
+  subnet_id              = data.aws_subnet.public.id
   user_data              = file("init.sh")
   tags = {
     Terraform = "true"
