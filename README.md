@@ -8,3 +8,4 @@ Creating AWS lambda function that prints a Good Afternoon message
 
 Added S3 bucket creation.
 
+#Comment to initialize new branch
