@@ -65,18 +65,28 @@ data "aws_subnet" "public_subnet_data" {
   }
 }
 
-module "ec2_instance" {
-  source = "terraform-aws-modules/ec2-instance/aws"
+# module "ec2_instance" {
+#   source = "terraform-aws-modules/ec2-instance/aws"
+#   version = "5.7.0"
+#   name = "single-instance"
 
-  name = "single-instance"
+#   ami                    = data.aws_ami.aws_ami_data.id
+#   instance_type          = var.ec2_instance_type
+#   vpc_security_group_ids = [data.aws_security_group.vpc_sg_data.id]
+#   subnet_id              = data.aws_subnet.public_subnet_data.id
+#   user_data              = file("init.sh")
+#   tags = {
+#     Terraform = "true"
+#   }
+# }
 
-  ami                    = data.aws_ami.aws_ami_data.id
-  instance_type          = var.ec2_instance_type
-  vpc_security_group_ids = [data.aws_security_group.vpc_sg_data.id]
-  subnet_id              = data.aws_subnet.public_subnet_data.id
-  user_data              = file("init.sh")
-  tags = {
-    Terraform = "true"
-  }
+resource "aws_instance" "ec2_instance1" {
+
+  ami                         = data.aws_ami.aws_ami_data.id
+  instance_type               = var.ec2_instance_type
+  subnet_id                   = data.aws_subnet.public_subnet_data.id
+  vpc_security_group_ids      = [data.aws_security_group.vpc_sg_data.id]
+  user_data                   = file("init.sh")
+  associate_public_ip_address = true
+
 }
-
