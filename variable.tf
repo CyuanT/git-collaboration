@@ -9,3 +9,15 @@ variable "lambda_file_name" {
   type        = string
   default     = "lambda_function"
 }
+
+variable "bucket_region" {
+  description = "Region for S3 Bucket"
+  type        = string
+  default     = "us-east-1"
+}
+
+variable "bucket_name" {
+  description = "Region for S3 Bucket"
+  type        = string
+  default     = "group3-tf-s3"
+}
