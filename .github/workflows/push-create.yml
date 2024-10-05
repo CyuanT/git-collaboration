@@ -5,7 +5,10 @@ on:
   push:
     branches:
       - main
-
+      
+env: 
+  AWS_REGION: "us-east-1"
+  
 jobs:
   Terraform-Create-And-Destroy:
     runs-on: ubuntu-latest
