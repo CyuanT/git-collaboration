@@ -31,5 +31,5 @@ variable "bucket_name" {
 variable "ec2_instance_type" {
   description = "ect instance type"
   type        = string
-  default     = "t2-micro" # to replace
+  default     = "t2.micro" # to replace
 }
