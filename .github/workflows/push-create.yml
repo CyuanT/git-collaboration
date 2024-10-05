@@ -11,7 +11,7 @@ env:
   
 jobs:
     Terraform-Create-And-Destroy:
-      environment: dev
+      # environment: dev
       runs-on: ubuntu-latest
       steps:
         - name: Checkout
@@ -31,7 +31,7 @@ jobs:
           run: terraform init
 
         - name: Terraform Apply
-          run: terraform apply -no-color -auto-approve --var lambda_function_name=${{ env.lambda_function_name }}
+          run: terraform apply -no-color -auto-approve --var lambda_function_name=${{ vars.lambda_function_name }}
 
         - name: Export terraform outputs
           id: tfout
@@ -42,5 +42,5 @@ jobs:
           run: sleep 180
 
         - name: Terraform Destroy
-          run: terraform destroy -no-color -auto-approve --var lambda_function_name=${{ env.lambda_function_name }}
+          run: terraform destroy -no-color -auto-approve --var lambda_function_name=${{ vars.lambda_function_name }}
 
