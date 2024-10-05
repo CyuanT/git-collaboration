@@ -21,3 +21,15 @@ variable "bucket_name" {
   type        = string
   default     = "group3-tf-s3"
 }
+
+variable "vpc_id" {
+  description = "Virtural Private Cloud ID"
+  type        = string
+  default     = "vpc-033addf3a46d7960e" # to replace
+}
+
+variable "ec2_instance_type" {
+  description = "ect instance type"
+  type        = string
+  default     = "t2-micro" # to replace
+}
