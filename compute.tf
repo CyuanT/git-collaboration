@@ -57,6 +57,14 @@ data "aws_ami" "aws_ami_data" {
 
 }
 
+data "aws_subnet" "public_subnet_data" {
+  filter {
+    name   = "tag:Name"
+    values = ["luqman-vpc-tf-module-public-us-east-1a"]
+
+  }
+}
+
 module "ec2_instance" {
   source = "terraform-aws-modules/ec2-instance/aws"
 
@@ -65,7 +73,7 @@ module "ec2_instance" {
   ami                    = data.aws_ami.aws_ami_data.id
   instance_type          = var.ec2_instance_type
   vpc_security_group_ids = [data.aws_security_group.vpc_sg_data.id]
-  subnet_id              = data.aws_subnet.public.id
+  subnet_id              = data.aws_subnet.public_subnet_data.id
   user_data              = file("init.sh")
   tags = {
     Terraform = "true"
