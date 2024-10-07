@@ -12,7 +12,7 @@ module "sns" {
 
       principals = var.sns_policy_statment.principals
 
-      conditions = merge(var.sns_policy_statment.conditions, { values = "${module.sqs.queue_arn}" })
+      conditions = merge(var.sns_policy_statment.conditions, { values = (module.sqs.queue_arn) })
     }
   }
 
