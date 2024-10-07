@@ -25,10 +25,16 @@ variable "bucket_name" {
 variable "sns_policy_statment" {
   description = "sns_policy_configuration"
   type = object({
-    sid        = string,
-    actions    = list,
-    principals = object,
-    conditions = object
+    sid     = string,
+    actions = list(string),
+    principals = object({
+      type        = string
+      identifiers = list
+    }),
+    conditions = object({
+      test     = string
+      variable = string
+    })
   })
 
   default = {
@@ -41,7 +47,6 @@ variable "sns_policy_statment" {
     conditions = [{
       test     = "StringLike"
       variable = "sns:Endpoint"
-      values   = [module.sqs.queue_arn]
     }]
   }
 }
