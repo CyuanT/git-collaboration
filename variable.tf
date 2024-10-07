@@ -21,3 +21,20 @@ variable "bucket_name" {
   type        = string
   default     = "group3-tf-s3"
 }
+
+variable "sns_policy_statment" {
+  description = "sns_policy_configuration"
+  type = object({
+    sid        = string,
+    actions    = list,
+    principals = list(object),
+    conditions = list(object)
+  })
+
+  default = {
+    sid        = "SQSSubscribe",
+    actions    = ["sns:Subscribe", "sns:Receive"],
+    principals = [{ type = "AWS", identifiers = ["*"] }],
+    conditions = [{ test = "StringLike", variable = "sns:Endpoint", values = [module.sqs.queue_arn] }]
+  }
+}
