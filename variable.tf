@@ -37,6 +37,7 @@ variable "sns_policy_statment" {
     principals = [{ type = "AWS", identifiers = ["*"] }],
     conditions = [{ test = "StringLike", variable = "sns:Endpoint", values = [module.sqs.queue_arn] }]
   }
+}
 
 # variable "vpc_id" {
 #   description = "Virtural Private Cloud ID"
