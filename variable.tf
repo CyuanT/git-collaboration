@@ -40,14 +40,14 @@ variable "sns_policy_statment" {
   default = ({
     sid     = "SQSSubscribe",
     actions = ["sns:Subscribe", "sns:Receive"],
-    principals = [{
+    principals = ({
       type        = "AWS"
       identifiers = ["*"]
-    }],
-    conditions = [{
+    }),
+    conditions = ({
       test     = "StringLike"
       variable = "sns:Endpoint"
-    }]
+    })
   })
 }
 
