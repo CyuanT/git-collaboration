@@ -27,8 +27,8 @@ variable "sns_policy_statment" {
   type = object({
     sid        = string,
     actions    = list,
-    principals = list(object),
-    conditions = list(object)
+    principals = object,
+    conditions = object
   })
 
   default = {
