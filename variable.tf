@@ -22,6 +22,35 @@ variable "bucket_name" {
   default     = "group3-tf-s3"
 }
 
+variable "sns_policy_statment" {
+  description = "sns_policy_configuration"
+  type = object({
+    sid     = string,
+    actions = list(string),
+    principals = object({
+      type        = string
+      identifiers = list(string)
+    }),
+    conditions = object({
+      test     = string
+      variable = string
+    })
+  })
+
+  default = ({
+    sid     = "SQSSubscribe",
+    actions = ["sns:Subscribe", "sns:Receive"],
+    principals = ({
+      type        = "AWS"
+      identifiers = ["*"]
+    }),
+    conditions = ({
+      test     = "StringLike"
+      variable = "sns:Endpoint"
+    })
+  })
+}
+
 # variable "vpc_id" {
 #   description = "Virtural Private Cloud ID"
 #   type        = string
