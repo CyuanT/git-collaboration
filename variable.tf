@@ -29,7 +29,7 @@ variable "sns_policy_statment" {
     actions = list(string),
     principals = object({
       type        = string
-      identifiers = list
+      identifiers = list(string)
     }),
     conditions = object({
       test     = string
