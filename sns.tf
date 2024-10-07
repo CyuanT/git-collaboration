@@ -1,6 +1,7 @@
 module "sns" {
-  source = "terraform-aws-modules/sns/aws"
-  # version = ">= 5.0"
+  source  = "terraform-aws-modules/sns/aws"
+  version = "~> 6.1"
+
 
   name = "ty-gitact-terra-sns"
 
@@ -28,7 +29,8 @@ module "sns" {
 }
 
 module "sqs" {
-  source = "terraform-aws-modules/sqs/aws"
+  source  = "terraform-aws-modules/sqs/aws"
+  version = "~> 4.2"
 
   name = "ty-gitact-terra-sqs"
 
