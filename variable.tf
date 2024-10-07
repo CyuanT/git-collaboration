@@ -37,4 +37,15 @@ variable "sns_policy_statment" {
     principals = [{ type = "AWS", identifiers = ["*"] }],
     conditions = [{ test = "StringLike", variable = "sns:Endpoint", values = [module.sqs.queue_arn] }]
   }
+
+# variable "vpc_id" {
+#   description = "Virtural Private Cloud ID"
+#   type        = string
+#   default     = "vpc-033addf3a46d7960e" # to replace
+# }
+
+variable "ec2_instance_type" {
+  description = "ect instance type"
+  type        = string
+  default     = "t2.micro" # to replace
 }
