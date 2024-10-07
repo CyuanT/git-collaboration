@@ -37,7 +37,7 @@ variable "sns_policy_statment" {
     })
   })
 
-  default = {
+  default = ({
     sid     = "SQSSubscribe",
     actions = ["sns:Subscribe", "sns:Receive"],
     principals = [{
@@ -48,7 +48,7 @@ variable "sns_policy_statment" {
       test     = "StringLike"
       variable = "sns:Endpoint"
     }]
-  }
+  })
 }
 
 # variable "vpc_id" {
