@@ -5,7 +5,14 @@ module "sns" {
   name = "ty-gitact-terra-sns"
 
   topic_policy_statements = {
-    sqs = var.sns_policy_statment
+    sqs = {
+      sid     = var.sns_policy_statment.sid
+      actions = var.sns_policy_statment.actions
+
+      principals = var.sns_policy_statment.principals
+
+      conditions = var.sns_policy_statment.conditions
+    }
   }
 
   subscriptions = {
