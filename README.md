@@ -15,3 +15,4 @@ Added S3 bucket creation.
 ![images](https://github.com/user-attachments/assets/c52e419f-c6b2-4293-8b56-82458e333659)
 
 
+This terraform code will also create a SNS and SQS from Github Actions.
